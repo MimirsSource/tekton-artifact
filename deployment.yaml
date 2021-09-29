@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-1.1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-app
+      version: "1.1"
+  template:
+    metadata:
+      labels:
+        app: sample-app
+        version: "1.1"
+    spec:
+      containers:
+        - name: sample-app
+          image: repo.treescale.com/tkloppe/sample-app:1.0
+      imagePullSecrets:
+        - name: regcred
